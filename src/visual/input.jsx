@@ -9,15 +9,13 @@ const Input = ({
   ccy,
   dtFrom,
   dtTo,
-  getFxRates,
-  getFxRatesForCurrency,
   onDatesChange,
   setDtFrom,
   setDtTo
 }) => {
   if (dtFrom === "") {
     return (
-      <Card className="mb-2 text-center">
+      <Card bg="light" className="mb-2 text-center">
         <Card.Body>
           <Card.Title>Please select date or currency</Card.Title>
           <DayPickerInput
@@ -30,10 +28,10 @@ const Input = ({
     );
   } else {
     return (
-      <Card className="mb-2 text-center">
+      <Card bg="light"  className="mb-2 text-center">
         
         <Card.Body>
-        <Card.Title>Showing a {ccy} currency rates</Card.Title>
+        <Card.Title>Showing {ccy} currency rates</Card.Title>
           <DayPickerInput
             value={"Rates from " + dtFrom}
             selectedDay={dtFrom}

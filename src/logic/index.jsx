@@ -26,7 +26,6 @@ class Index extends Component {
           this.state.tp
       )
       .then(response => {
-        //console.log(response.data)
         this.convertXMLtoJS(response, true);
       })
       .catch(error => {
@@ -81,18 +80,17 @@ class Index extends Component {
   };
 
   setDtTo = e => {
-    this.setState({dtTo: e.toJSON().slice(0, 10)})
+    this.setState({ dtTo: e.toJSON().slice(0, 10) });
     setTimeout(() => this.getFxRatesForCurrency(), 100);
-  }
+  };
 
   setDtFrom = e => {
-    this.setState({dtFrom: e.toJSON().slice(0, 10)})
+    this.setState({ dtFrom: e.toJSON().slice(0, 10) });
     setTimeout(() => this.getFxRatesForCurrency(), 100);
-  }
+  };
 
   convertXMLtoJS = (response, fxRates) => {
     let object = convert.xml2js(response.data, { compact: true, trim: true });
-    //console.log(object.FxRates)
     let answer = object.FxRates.FxRate.map(e => {
       let pair = {};
       pair.Dt = e.Dt._text;
@@ -100,7 +98,7 @@ class Index extends Component {
         e.CcyAmt[0].Ccy._text,
         e.CcyAmt[0].Amt._text,
         e.CcyAmt[1].Ccy._text,
-        e.CcyAmt[1].Amt._text
+        Number(e.CcyAmt[1].Amt._text) //for graph
       ];
       return pair;
     });
@@ -112,7 +110,6 @@ class Index extends Component {
         fxRatesRange: ""
       });
     } else {
-      console.log("fxRaterRanges trigered");
       this.setState({
         fxRatesRange: answer,
         dtTo: answer[0].Dt,
@@ -121,19 +118,18 @@ class Index extends Component {
     }
   };
   onDatesChange = e => {
-    console.log(e);
     if (typeof e === "object") {
       this.setState({ dt: e.toJSON().slice(0, 10), fxRatesRange: "" });
       setTimeout(() => this.getFxRates(), 100);
     }
   };
   render() {
-    console.log("fxRate: ", this.state.fxRates);
-    console.log("fxRatesRange: ", this.state.fxRatesRange);
-    console.log("ccy :", this.state.ccy);
-    console.log("Dt :", this.state.dt);
-    console.log("dtto :", this.state.dtTo);
-    console.log("dtFrom :", this.state.dtFrom);
+    // console.log("fxRate: ", this.state.fxRates);
+    // console.log("fxRatesRange: ", this.state.fxRatesRange);
+    // console.log("ccy :", this.state.ccy);
+    // console.log("Dt :", this.state.dt);
+    // console.log("dtto :", this.state.dtTo);
+    // console.log("dtFrom :", this.state.dtFrom);
     const { tp, dt, ccy, dtFrom, dtTo, fxRates, fxRatesRange } = this.state;
     return (
       <React.Fragment>

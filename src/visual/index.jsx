@@ -1,8 +1,9 @@
 import React from "react";
 
 import Welcome from "./welcome";
-import Answer from "./answer";
+import Answer from "./answer/index";
 import Input from "./input";
+
 
 import Container from "react-bootstrap/Container";
 
@@ -22,7 +23,7 @@ const Index = ({
   setDtFrom
 }) => {
   return (
-    <Container className="p-2" fluid>
+    <Container fluid style={{backgroundColor: 'azure'}}>
       <Welcome />
       <Input
         tp={tp}
@@ -36,6 +37,7 @@ const Index = ({
         setDtTo={setDtTo}
         setDtFrom={setDtFrom}
       />
+     
       <Answer
         fxRates={fxRates}
         fxRatesRange={fxRatesRange}

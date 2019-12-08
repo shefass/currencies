@@ -4,7 +4,7 @@ import Card from "react-bootstrap/Card";
 
 const Welcome = () => {
   return (
-    <Card className="mb-2 text-center">
+    <Card bg="dark" text="white" className="mb-2 text-center">
       <Card.Body>
         <Card.Title>Welcome!</Card.Title>
         <Card.Text>In this page, you can see all currency rates by date or specific currency rates in the time interval.</Card.Text>
