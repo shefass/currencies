@@ -22,7 +22,7 @@ const Index = ({
   setDtFrom
 }) => {
   return (
-    <Container fluid>
+    <Container className="p-2" fluid>
       <Welcome />
       <Input
         tp={tp}
